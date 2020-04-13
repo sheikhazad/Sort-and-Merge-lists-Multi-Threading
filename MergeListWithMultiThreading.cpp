@@ -61,11 +61,11 @@ list<int> mergeMultiThread(const list<list<int>>& lists){
     auto iterPrev = lists.cbegin();
 
     for( ; iter != lists.end() && iterPrev != lists.end(); std::advance(iter,2), std::advance(iterPrev,2)){
-        Q.emplace(async(std::launch::async | std::launch::deferred, mergeLists, *iterPrev, *iter));
+        Q.emplace(async(std::launch::async | std::launch::deferred, mergeLists, ref(*iterPrev), ref(*iter)));
     }
 
     if ( iterPrev != lists.end()){
-        Q.emplace(async(std::launch::async | std::launch::deferred, mergeLists, *iterPrev, list<int>()));
+        Q.emplace(async(std::launch::async | std::launch::deferred, mergeLists, ref(*iterPrev), list<int>()));
     }
 
     while(!Q.empty()){
