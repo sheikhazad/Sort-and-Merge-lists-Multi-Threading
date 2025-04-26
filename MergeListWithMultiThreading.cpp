@@ -1,3 +1,4 @@
+//Note: To reduce latency we can avoid returning copy but in code its just shown for clarity.
 /*list<int> l1{0, 3, 6, 9, 12, 15};
 list<int> l2{1, 4, 7, 10};
 list<int> l3{2, 5, 8, 8};
@@ -97,12 +98,12 @@ int main()
     cout<<"------------TEST CASE-1: l1+l2 ------------------------" <<endl <<endl;
     cout<< "Result from NON-THREAD Flow : " << endl;
     list<int> LR1 = mergeLists(l1,l2);
-    for(auto r: LR1)
+    for(const auto& r: LR1)
     {
         cout<< r <<" ";
     }
     cout<< "\n\nResult from MULTI-THREADING: " << endl;
-    for(auto r3: mergeMultiThread({l1,l2}))
+    for(const auto& r3: mergeMultiThread({l1,l2}))
     {
         cout<< r3 <<" ";
     }
@@ -110,12 +111,12 @@ int main()
     cout<<"\n\n------------TEST CASE-2: l1+l2+l3 ------------------" <<endl<<endl;
     cout<< "Result from NON-THREAD Flow : " << endl;
     list<int> LR2 = mergeLists(LR1,l3);
-    for(auto r: LR2)
+    for(const auto& r: LR2)
     {
         cout<< r <<" ";
     }
     cout<< "\n\nResult from MULTI-THREADING: " << endl;
-    for(auto r3: mergeMultiThread({l1,l2,l3}))
+    for(const auto& r3: mergeMultiThread({l1,l2,l3}))
     {
         cout<< r3 <<" ";
     }
@@ -123,12 +124,12 @@ int main()
     cout<<"\n\n------------TEST CASE-3: l1+l2+l3+l4 --------------" <<endl<<endl;
     cout<< "Result from NON-THREAD Flow : " << endl;
     list<int> LR3 = mergeLists(LR2,l4);
-    for(auto r: LR3)
+    for(const auto& r: LR3)
     {
         cout<< r <<" ";
     }
     cout<< "\n\nResult from MULTI-THREADING: " << endl;
-    for(auto r3: mergeMultiThread({l1,l2,l3,l4}))
+    for(const auto& r3: mergeMultiThread({l1,l2,l3,l4}))
     {
         cout<< r3 <<" ";
     }
@@ -136,13 +137,13 @@ int main()
     cout<<"\n\n------------TEST CASE-4: l1+l2+l3+l4+l5 -----------" <<endl<<endl;
     cout<< "Result from NON-THREAD Flow : " << endl;
     list<int> LR4 = mergeLists(LR3,l5);
-    for(auto r: LR4)
+    for(const auto& r: LR4)
     {
         cout<< r <<" ";
     }
 
     cout<< "\n\nResult from MULTI-THREADING: " << endl;
-    for(auto r3: mergeMultiThread({l1,l2,l3,l4,l5}))
+    for(const auto& r3: mergeMultiThread({l1,l2,l3,l4,l5}))
     {
         cout<< r3 <<" ";
     }
@@ -152,12 +153,12 @@ int main()
     cout<< "Result from NON-THREAD Flow : " << endl;
     list<int>dummy;
     list<int> LR5 = mergeLists(l1, dummy);
-    for(auto r: LR5)
+    for(const auto& r: LR5)
     {
         cout<< r <<" ";
     }
     cout<< "\nResult from MULTI-THREADING:  - WHEN SINGLE LIST : " << endl;
-    for(auto r3: mergeMultiThread({l1}))
+    for(const auto& r3: mergeMultiThread({l1}))
     {
         cout<< r3 <<" ";
     }
